@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap');
+
+
+
+*{
+    font-family: 'Mukta', sans-serif;
+    margin: 0;
+}
+
+body{
+    background: rgb(79,255,185);
+    background: linear-gradient(90deg, rgba(79,255,185,1) 0%, rgba(14,235,176,1) 100%);
+}
+
+.header{
+    display: flex;
+    font-size: 30px;
+    color: rgb(12, 48, 48);
+    justify-content: center;
+}
+
+.calculator{
+    border-spacing: 0;
+    border-radius: 10%;
+    background-color: rgb(137, 255, 200);
+    padding: 30px;
+    margin: 3%;
+    font-size:60px;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+}
+
+.calculator td{
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    justify-self: center;
+} 
+
+.numbers{
+    width: 100px;
+    border-radius: 18%;
+    color: rgb(116, 116, 116);
+    cursor: pointer;
+    background-color: rgb(255, 236, 173);
+    transition: transform .3s;
+}
+
+td:hover{
+    transform: scaleX(1)
+}
+
