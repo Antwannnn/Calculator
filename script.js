@@ -43,7 +43,7 @@ operators.forEach(current => {
     });
 })
 
-clear.addEventListener('click', function() {
+clear.addEventListener('click', function () {
     clearContent(result);
     operands = [];
     operator = undefined;
@@ -54,8 +54,12 @@ clear.addEventListener('click', function() {
 equal.addEventListener('click', function() {
     clearContent(result);
     calc = calculate(operator);
-    console.log(calc);
-    addToResult(calc, result)
+    operating = false;
+    operands = [];
+    operands.push(calc);
+    addToResult(calc, result);
+
+
 })
 
 function toOperation(str, n1, n2){
