@@ -6,6 +6,7 @@ const clear = document.getElementById('clear');
 
 let result = document.getElementById('result');
 let calc = null;
+var value = "";
 
 let baseColor = getComputedStyle(document.querySelector('.numbers'));
 
@@ -16,11 +17,9 @@ let operator;
 // Navigate through the numbers' td each click to get the clicked element.
 numbers.forEach(current =>{
     current.addEventListener('click', function (){
-        var value = current.textContent;
-
-        addToResult(value, result);
+        value += current.textContent;
+        addToResult(current.textContent, result);
         changeColor(current, 'yellow');
-        operands.push(value);
         console.log(operands);
         delayTask(1000, function (){
             changeColor(current, baseColor)
@@ -32,11 +31,13 @@ operators.forEach(current => {
     current.addEventListener('click', function(){
         var resultContent = result.textContent;
         if(resultContent !== ''){
+            operands.push(value);
             addToResult(current.textContent, result);
             operator = current.textContent;
             console.log(operands);
             operating = true;
             current.setAttribute('style', 'font-size : 55px; opacity : 0.8;');
+            value = "";
 
         }
 
@@ -46,12 +47,14 @@ operators.forEach(current => {
 clear.addEventListener('click', function () {
     clearContent(result);
     operands = [];
+    value = "";
     operator = undefined;
     operating = false;
     calc = null;
 })
 
 equal.addEventListener('click', function() {
+    operands.push(value);
     clearContent(result);
     calc = calculate(operator);
     operating = false;

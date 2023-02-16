@@ -67,6 +67,13 @@ body{
     background-color: rgb(44, 68, 61);
 }
 
+#clear{
+    width: 100px;
+    border-radius: 18%;
+    color: rgb(0, 0, 0);
+    background-color: rgb(186, 227, 215); 
+}
+
 td div{
     text-align: center;
     transition: .25s;
