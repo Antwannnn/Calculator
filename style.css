@@ -60,6 +60,13 @@ body{
 
 }
 
+#equals{
+    width: 100px;
+    border-radius: 18%;
+    color: rgb(255, 255, 255);
+    background-color: rgb(44, 68, 61);
+}
+
 td div{
     text-align: center;
     transition: .25s;
