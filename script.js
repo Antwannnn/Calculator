@@ -17,28 +17,32 @@ let operator;
 // Navigate through the numbers' td each click to get the clicked element.
 numbers.forEach(current =>{
     current.addEventListener('click', function (){
-        value += current.textContent;
-        addToResult(current.textContent, result);
-        changeColor(current, 'yellow');
-        console.log(operands);
-        delayTask(1000, function (){
-            changeColor(current, baseColor)
-        });
+        if(calc == null){
+            value += current.textContent;
+            addToResult(current.textContent, result);
+            changeColor(current, 'yellow');
+            console.log(operands);
+            delayTask(1000, function (){
+                changeColor(current, baseColor)
+            });
+        }
+        
     })
 })
 
 operators.forEach(current => {
     current.addEventListener('click', function(){
+        calc = null;
         var resultContent = result.textContent;
-        if(resultContent !== ''){
+        if(operands.length < 1)
             operands.push(value);
+        if(resultContent !== ''){
             addToResult(current.textContent, result);
             operator = current.textContent;
             console.log(operands);
             operating = true;
             current.setAttribute('style', 'font-size : 55px; opacity : 0.8;');
             value = "";
-
         }
 
     });
@@ -55,11 +59,11 @@ clear.addEventListener('click', function () {
 
 equal.addEventListener('click', function() {
     operands.push(value);
-    clearContent(result);
     calc = calculate(operator);
-    operating = false;
     operands = [];
-    operands.push(calc);
+    operating = false;
+    operands.push(calc.toString())
+    clearContent(result);
     addToResult(calc, result);
 
 
@@ -108,9 +112,9 @@ function clearContent(element){
 // Return an integer based on string content in a certain radix
 function tryParseNumber(str, base){
     try{
-        return parseInt(str, base);
+        return parseFloat(str, base);
     } catch(e){
-        throw new NumberFormatException("Couldn't parse number to numeric value.")
+        throw new NumberFormatException("Couldn't parse string to numeric value.")
     }
 }
 
