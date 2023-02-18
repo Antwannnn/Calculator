@@ -14,7 +14,8 @@ let operating = false;
 let operands = [];
 let operator;
 
-// Navigate through the numbers' td each click to get the clicked element.
+// Navigate through the numbers' td tag at each click to get the clicked element and
+// operate with it.
 numbers.forEach(current =>{
     current.addEventListener('click', function (){
         if(calc == null){
@@ -30,6 +31,8 @@ numbers.forEach(current =>{
     })
 })
 
+// Navigate through all the operators' td tag at each click to get the clicked element and
+// operate with it.
 operators.forEach(current => {
     current.addEventListener('click', function(){
         calc = null;
@@ -48,6 +51,8 @@ operators.forEach(current => {
     });
 })
 
+
+// Cl sign click handler
 clear.addEventListener('click', function () {
     clearContent(result);
     operands = [];
@@ -57,6 +62,7 @@ clear.addEventListener('click', function () {
     calc = null;
 })
 
+// Equal sign click handler
 equal.addEventListener('click', function() {
     operands.push(value);
     calc = calculate(operator);
@@ -69,6 +75,7 @@ equal.addEventListener('click', function() {
 
 })
 
+// Converts a string into a valid operation between two numbers
 function toOperation(str, n1, n2){
     switch(str){
         case 'X': return n1 * n2;
@@ -76,11 +83,13 @@ function toOperation(str, n1, n2){
         case '-': return n1 - n2;
         case '+': return n1 + n2;
         case '%': return n1 % n2;
+        case '√': return Math.sqrt(n1);
         default : return '';
     }
 }
 
-
+// Make the operation between the first and second index of the operands
+// based on an operator given by toOperation() function
 function calculate(operator){
     let left = tryParseNumber(operands[0], 10);
     let right = tryParseNumber(operands[1], 10);
